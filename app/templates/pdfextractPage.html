@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% if success %}
+        <div class="alert alert-success" role="alert">
+            Successfuly Saved.<a href="#" class="alert-link">Click to View the Data</a>.
+        </div>
+    {% endif %}
+    <div class="container-md d-flex justify-content-center" style="padding-top: 100px;">
+        <form action="" method="post" enctype="multipart/form-data">
+            <div class="row g-4 align-items-center">
+                <div class="col-auto">
+                    <label for="exampleInputEmail1" class="form-label">Upload Your file *</label>
+                </div>
+                <div class="col-auto">
+                    <input type="file" name = 'file' class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                </div>
+                <div class="col-auto">
+                  <span id="passwordHelpInline" class="form-text">
+                    Max Size 1MB.
+                  </span>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary">Extract Data</button>
+                </div>
+            </div>       
+        </form>
+    </div
+
+
+{% endblock %}

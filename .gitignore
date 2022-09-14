@@ -1,0 +1,9 @@
+fenve/
+
+__pycache__/
+*.pyc
+
+migrations/
+
+*.pdf
+*.xlsx
