@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul style="list-style-type: none;">
+                {% for message in messages %}
+                    <li>
+                        <div class="alert alert-{{message[0]}} alert-dismissible fade show" role="alert" style="width: 600px;">
+                            {{message[1]}}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </li>
+                {%endfor%}
+            </ul>
+        {%endif%}
+    {%endwith%}
+    <h1 style="text-align:center;">Sign Up</h1>
+    <form action="{{ url_for('signup') }}" method="post" onsubmit="return check_password()">
+        <div class="form-group row d-flex justify-content-center" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
+            <label class="col-sm-2 col-form-label" for="email">
+                <strong>Email <i class="fa-solid fa-envelope"></i></strong>
+            </label>
+            <div class="col-sm-10">
+                <input type="email" name="email" class="form-control" id="email" placeholder="Enter email" required> 
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-center" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
+            <label class="col-sm-2 col-form-label" for="email">
+                <strong>Name<i class="fa-solid fa-file-signature"></i></strong>
+            </label>
+            <div class="col-sm-10">
+                <input type="text" name="fullname" class="form-control" id="email" placeholder="Enter Full Name" required> 
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-center" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
+            <label class="col-sm-2 col-form-label">
+                <strong>Password<i class="fa-solid fa-key"></i></strong>
+            </label>
+            <div class="col-sm-10">
+                <input type="password" name="pwd1" class="form-control" id="pwd1" placeholder="Enter Password" required> 
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-center" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
+            <label class="col-sm-2 col-form-label" for="pwd2">
+                <strong>Confirm Password<i class="fa-solid fa-key"></i></strong>
+            </label>
+            <div class="col-sm-10">
+                <input type="password" name="pwd2" class="form-control" id="pwd2" placeholder="Confirm Password" required> 
+            </div>
+        </div>
+
+        <div class="form-group row d-flex justify-content-center" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
+            <span id="Error" style="color: rgb(207, 104, 104);"></span>
+        </div>
+        
+        <div class="d-flex justify-content-center" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
+            <button type="submit" class="btn btn-primary col-sm-10" style="width: 200px;">Sign Up <i class="fa-solid fa-user-plus"></i></button>
+        </div>
+
+        <div class="d-flex justify-content-center" style="display: block;margin-left: auto;margin-right: auto;width: 50%;padding:10px;">
+            <a href="{{url_for('login')}}">Already has Account.</a>
+        </div>
+
+        
+    </form>
+
+    <script>
+        function check_password(){
+            const pwd1 = document.getElementById("pwd1").value
+            const pwd2 = document.getElementById("pwd2").value
+            if (pwd1.match(pwd2)){
+                return true
+            }
+            else{
+                document.getElementById("Error").innerHTML = "Password1 and Password2 doesn't match."
+                return false
+            }
+        }
+        
+
+    </script>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align:center; padding:20px;">Recently Added Forms</h1>
+  <div class="container">
+    <div class="row row-cols-3 gy-3">
+      {% for user_data in user_datas%}
+      <div class="col-sm-4">
+        <div class="card">
+          <ul class="list-group list-group-flush bg-primary">
+            <li class="list-group-item"><strong>ID: </strong>{{user_data.id}}</li>
+            <li class="list-group-item"><strong>SOCIAL NUMBER: </strong>{{user_data.emp_social_num}}</li>
+            <li class="list-group-item"><strong>EIN: </strong>{{user_data.ein}}</li>
+            <li class="list-group-item"><strong>ADDRESS: </strong>{{user_data.emp_address}}</li>
+            <li class="list-group-item"><strong>CONTROL NUMBER: </strong>{{user_data.control_num}}</li>
+          </ul>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

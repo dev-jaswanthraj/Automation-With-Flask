@@ -13,18 +13,17 @@ class pdftoexcel:
             self.__ein = __extracted_tabel[1][0].split("\n")
             self.__full_address = __extracted_tabel[2][0].split("\n")
             self.__control_number = __extracted_tabel[5][0].split("\n")
-            
 
+            
             def exists(a):
                 try:
-                    a[1]
-                    return a
+                    return " ".join(a[1:])
                 except:
                     return None
-
+    
             return {
-                self.__Employees_social_security_number[0]:self.__Employees_social_security_number[1], 
-                self.__ein[0]: self.__ein[1], 
+                self.__Employees_social_security_number[0]:exists(self.__Employees_social_security_number), 
+                self.__ein[0]: exists(self.__ein), 
                 self.__full_address[0]: self.__full_address[1:],
                 self.__control_number[0]: exists(self.__control_number),
             }
